@@ -29,8 +29,8 @@ public class Ship extends Boat implements Swimable {
         Lifeboat lifeboat = new Lifeboat(BoatType.LIFEBOAT, lifeboatsCapacity, xCoordinate, yCoordinate);
         for (int i = 0; i < numberOfPeople; i++) {
             try {
-                lifeboat.addSailor(sailors.getFirst());
-                sailors.removeFirst();
+                lifeboat.addSailor(sailors.get(0));
+                sailors.remove(0);
             }
             catch (CapacityException e) {
                 System.out.println(e.getMessage());
