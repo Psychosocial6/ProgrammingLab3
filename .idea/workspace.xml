@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ProgrammingLab3:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cfc441f-78ea-4c28-95e0-615a3146415e" name="Changes" comment="">
+    <list default="true" id="3cfc441f-78ea-4c28-95e0-615a3146415e" name="Changes" comment="small fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boats/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Boat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boats/Lifeboat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Lifeboat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boats/Longboat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Longboat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/boats/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Ship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boats/Swimable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Swimable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/River.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/AmmoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/AmmoException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/CapacityException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/CapacityException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functioning/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functioning/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functioning/NameGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functioning/NameGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/people/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/people/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/people/StoryTeller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/people/StoryTeller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/records/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/records/Settings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,18 +43,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Psychosocial6"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Psychosocial6&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Psychosocial6/ProgrammingLab3.git",
-    "accountId": "666089aa-a264-4464-a4f0-3beb25fe1f76"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Psychosocial6/ProgrammingLab3.git&quot;,
+    &quot;accountId&quot;: &quot;666089aa-a264-4464-a4f0-3beb25fe1f76&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="autoscrollToSource" value="true" />
   </component>
@@ -58,12 +75,19 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Java Projects/ProgrammingLab3/src/jackson-core-2.18.2.jar",
     "onboarding.tips.debug.path": "D:/Java Projects/ProgrammingLab3/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Java Projects\ProgrammingLab3\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -87,7 +111,20 @@
       <option name="presentableId" value="Default" />
       <updated>1732455632965</updated>
     </task>
+    <task id="LOCAL-00001" summary="small fixes">
+      <option name="closed" value="true" />
+      <created>1732500260298</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1732500260298</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="small fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="small fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

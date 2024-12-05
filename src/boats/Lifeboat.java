@@ -3,13 +3,13 @@ package boats;
 import enums.BoatType;
 import enums.FlowDirection;
 import exceptions.CapacityException;
+import functioning.CoordinatesUtil;
 import people.Sailor;
 
-import static java.lang.Math.*;
-public class Lifeboat extends Boat implements Swimable {
+public class Lifeboat extends Boat {
 
-    public Lifeboat(BoatType type, int capacity, double xCoordinate, double yCoordinate) {
-        super(type, capacity, xCoordinate, yCoordinate);
+    public Lifeboat(int capacity, double xCoordinate, double yCoordinate) {
+        super(BoatType.LIFEBOAT, capacity, xCoordinate, yCoordinate);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class Lifeboat extends Boat implements Swimable {
             sailors.add(sailor);
         }
         else {
-            throw new CapacityException();
+            throw new CapacityException(toString());
         }
     }
 
@@ -31,29 +31,17 @@ public class Lifeboat extends Boat implements Swimable {
             }
         }
 
-        double deltaX;
-        double deltaY;
-        direction *= (PI / 180);
-        deltaX = cos(direction) * power * time;
-        if (flowDirection == FlowDirection.RIGHT) {
-            deltaX += flowVelocity * time;
-        }
-        else {
-            deltaX -= flowVelocity * time;
-        }
-        deltaY = sin(direction) * power * time;
+        xCoordinate = CoordinatesUtil.newCoordinates(time, direction, flowDirection, flowVelocity, width, power, xCoordinate, yCoordinate)[0];
+        yCoordinate = CoordinatesUtil.newCoordinates(time, direction, flowDirection, flowVelocity, width, power, xCoordinate, yCoordinate)[1];
 
-        xCoordinate += deltaX;
-        if (yCoordinate + deltaY >= width) {
-            yCoordinate = width;
+        if (yCoordinate == width) {
             System.out.println("Шлюпка пристала к берегу\n");
         }
-        else if (yCoordinate + deltaY <= 0) {
+        else if (yCoordinate == 0) {
             yCoordinate = 0;
             System.out.println("Шлюпка пристала к берегу\n");
         }
         else {
-            yCoordinate += deltaY;
             System.out.printf("Шлюпка приплыла на координаты x = %f, y = %f\n", xCoordinate, yCoordinate);
         }
     }

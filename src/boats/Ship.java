@@ -4,18 +4,16 @@ import enums.BoatType;
 import enums.FlowDirection;
 import exceptions.CapacityException;
 import exceptions.NumberOfLifeboatsException;
+import functioning.CoordinatesUtil;
 import people.Sailor;
 
-import static java.lang.Math.*;
-import static java.lang.Math.sin;
-
-public class Ship extends Boat implements Swimable {
+public class Ship extends Boat {
 
     private double enginePower;
     private int numberOfLifeboats;
     private int lifeboatsCapacity;
 
-    public Ship(BoatType type, int capacity, double xCoordinate, double yCoordinate, double enginePower, int numberOfLifeboats, int lifeboatsCapacity) {
+    public Ship(int capacity, double xCoordinate, double yCoordinate, double enginePower, int numberOfLifeboats, int lifeboatsCapacity) {
         super(BoatType.SHIP, capacity, xCoordinate, yCoordinate);
         this.enginePower = enginePower;
         this.numberOfLifeboats = numberOfLifeboats;
@@ -26,7 +24,7 @@ public class Ship extends Boat implements Swimable {
         if (numberOfLifeboats == 0) {
             throw new NumberOfLifeboatsException();
         }
-        Lifeboat lifeboat = new Lifeboat(BoatType.LIFEBOAT, lifeboatsCapacity, xCoordinate, yCoordinate);
+        Lifeboat lifeboat = new Lifeboat(lifeboatsCapacity, xCoordinate, yCoordinate);
         for (int i = 0; i < numberOfPeople; i++) {
             try {
                 lifeboat.addSailor(sailors.get(0));
@@ -44,7 +42,7 @@ public class Ship extends Boat implements Swimable {
         if (numberOfLifeboats == 0) {
             throw new NumberOfLifeboatsException();
         }
-        Lifeboat lifeboat = new Lifeboat(BoatType.LIFEBOAT, lifeboatsCapacity, xCoordinate, yCoordinate);
+        Lifeboat lifeboat = new Lifeboat(lifeboatsCapacity, xCoordinate, yCoordinate);
         for (int i : people) {
             try {
                 lifeboat.addSailor(sailors.get(i));
@@ -64,35 +62,22 @@ public class Ship extends Boat implements Swimable {
             sailors.add(sailor);
         }
         else {
-            throw new CapacityException();
+            throw new CapacityException(toString());
         }
     }
 
     @Override
     public void swim(double time, double direction, FlowDirection flowDirection, double flowVelocity, double width) {
-        double deltaX;
-        double deltaY;
-        direction *= (PI / 180);
-        deltaX = cos(direction) * enginePower * time;
-        if (flowDirection == FlowDirection.RIGHT) {
-            deltaX += flowVelocity * time;
-        }
-        else {
-            deltaX -= flowVelocity * time;
-        }
-        deltaY = sin(direction) * enginePower * time;
+        xCoordinate = CoordinatesUtil.newCoordinates(time, direction, flowDirection, flowVelocity, width, enginePower, xCoordinate, yCoordinate)[0];
+        yCoordinate = CoordinatesUtil.newCoordinates(time, direction, flowDirection, flowVelocity, width, enginePower, xCoordinate, yCoordinate)[1];
 
-        xCoordinate += deltaX;
-        if (yCoordinate + deltaY >= width) {
-            yCoordinate = width;
+        if (yCoordinate == width) {
             System.out.println("Корабль пристал к берегу\n");
         }
-        else if (yCoordinate + deltaY <= 0) {
-            yCoordinate = 0;
+        else if (yCoordinate == 0) {
             System.out.println("Корабль пристал к берегу\n");
         }
         else {
-            yCoordinate += deltaY;
             System.out.printf("Корабль приплыл на координаты x = %f, y = %f\n", xCoordinate, yCoordinate);
         }
     }

@@ -5,9 +5,8 @@ import exceptions.CapacityException;
 import people.Sailor;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public abstract class Boat {
+public abstract class Boat implements Swimable {
 
     protected BoatType type;
     protected int capacity;
@@ -67,7 +66,7 @@ public abstract class Boat {
 
     @Override
     public String toString() {
-        return "Плавсредство типа " + type;
+        return String.format("Плавсредство типа %s", type);
     }
 
     @Override

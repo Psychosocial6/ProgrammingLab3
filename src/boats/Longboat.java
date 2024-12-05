@@ -3,12 +3,12 @@ package boats;
 import enums.BoatType;
 import enums.FlowDirection;
 import exceptions.CapacityException;
+import functioning.CoordinatesUtil;
 import people.Sailor;
-import static java.lang.Math.*;
 
-public class Longboat extends Boat implements Swimable {
+public class Longboat extends Boat {
 
-    public Longboat(BoatType type, int capacity, double xCoordinate, double yCoordinate) {
+    public Longboat(int capacity, double xCoordinate, double yCoordinate) {
         super(BoatType.LONGBOAT, capacity, xCoordinate, yCoordinate);
     }
 
@@ -18,42 +18,29 @@ public class Longboat extends Boat implements Swimable {
             sailors.add(sailor);
         }
         else {
-            throw new CapacityException();
+            throw new CapacityException(toString());
         }
     }
 
     @Override
     public void swim(double time, double direction, FlowDirection flowDirection, double flowVelocity, double width) {
-        int power = 0;
+        double power = 0;
         for (Sailor sailor : sailors) {
             if (sailor.isRowing) {
                 power += sailor.getStrength();
             }
         }
 
-        double deltaX;
-        double deltaY;
-        direction *= (PI / 180);
-        deltaX = cos(direction) * power * time;
-        if (flowDirection == FlowDirection.RIGHT) {
-            deltaX += flowVelocity * time;
-        }
-        else {
-            deltaX -= flowVelocity * time;
-        }
-        deltaY = sin(direction) * power * time;
+        xCoordinate = CoordinatesUtil.newCoordinates(time, direction, flowDirection, flowVelocity, width, power, xCoordinate, yCoordinate)[0];
+        yCoordinate = CoordinatesUtil.newCoordinates(time, direction, flowDirection, flowVelocity, width, power, xCoordinate, yCoordinate)[1];
 
-        xCoordinate += deltaX;
-        if (yCoordinate + deltaY >= width) {
-            yCoordinate = width;
+        if (yCoordinate == width) {
             System.out.println("Баркас пристал к берегу\n");
         }
-        else if (yCoordinate + deltaY <= 0) {
-            yCoordinate = 0;
+        else if (yCoordinate == 0) {
             System.out.println("Баркас пристал к берегу\n");
         }
         else {
-            yCoordinate += deltaY;
             System.out.printf("Баркас приплыл на координаты x = %f, y = %f\n", xCoordinate, yCoordinate);
         }
     }

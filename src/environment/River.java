@@ -12,9 +12,9 @@ public class River {
     private final FlowDirection FLOW_DIRECTION;
     private final double WIDTH;
 
-    public River(FlowDirection FLOW_DIRECTION, double WIDTH, double flowVelocity, ArrayList<Boat> boats) {
-        this.FLOW_DIRECTION = FLOW_DIRECTION;
-        this.WIDTH = WIDTH;
+    public River(FlowDirection flowDirection, double width, double flowVelocity, ArrayList<Boat> boats) {
+        this.FLOW_DIRECTION = flowDirection;
+        this.WIDTH = width;
         this.flowVelocity = flowVelocity;
         this.boats = boats;
     }
@@ -39,11 +39,11 @@ public class River {
         this.flowVelocity = flowVelocity;
     }
 
-    public FlowDirection getFLOW_DIRECTION() {
+    public FlowDirection getflowDirection() {
         return FLOW_DIRECTION;
     }
 
-    public double getWIDTH() {
+    public double getWidth() {
         return WIDTH;
     }
 }

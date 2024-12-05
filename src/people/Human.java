@@ -1,7 +1,5 @@
 package people;
 
-import java.util.Objects;
-
 public abstract class Human {
 
     protected String name;

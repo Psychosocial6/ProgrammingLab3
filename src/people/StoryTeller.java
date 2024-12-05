@@ -3,7 +3,6 @@ package people;
 import attributes.Spyglass;
 import boats.Boat;
 import environment.River;
-
 import java.util.ArrayList;
 
 public class StoryTeller extends Human {
@@ -28,10 +27,10 @@ public class StoryTeller extends Human {
             System.out.printf("%s не видит через подзорную трубу людей на реке\n", name);
         }
         for (Boat boat : boats) {
-            System.out.printf("%s видит через подзорную трубу %s на реке\n", name, boat.toString());
+            System.out.printf("%s видит через подзорную трубу %s на реке\n", name, boat);
         }
         for (Human human : people) {
-            System.out.printf("%s видит через подзорную трубу человека %s\n", name, human.toString());
+            System.out.printf("%s видит через подзорную трубу человека %s\n", name, human);
         }
     }
 

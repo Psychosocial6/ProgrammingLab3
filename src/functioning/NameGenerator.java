@@ -10,5 +10,4 @@ public class NameGenerator {
         Random random = new Random();
         return NAMES[random.nextInt(0, NAMES.length)];
     }
-
 }
