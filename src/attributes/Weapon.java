@@ -20,12 +20,12 @@ public class Weapon {
         this.ammo = ammo;
     }
 
-    public void shoot() throws AmmoException {
+    public void shoot(String username) throws AmmoException {
         if (ammo > 0) {
             ammo -= 1;
         }
         else {
-            throw new AmmoException();
+            throw new AmmoException(username);
         }
     }
 

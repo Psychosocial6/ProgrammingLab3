@@ -8,6 +8,10 @@ import people.Sailor;
 
 public class Lifeboat extends Boat {
 
+    public Lifeboat() {
+        super();
+    }
+
     public Lifeboat(int capacity, double xCoordinate, double yCoordinate) {
         super(BoatType.LIFEBOAT, capacity, xCoordinate, yCoordinate);
     }

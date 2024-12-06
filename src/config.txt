@@ -1,0 +1,33 @@
+#sleeping
+sleepingTime : 1
+
+#river
+flowDirection : LEFT
+width : 250
+flowVelocity : 1
+
+#storyTeller
+name : Рассказчик
+
+#ship
+capacity : 10
+xCoordinate : 0
+yCoordinate : 150
+enginePower : 50
+numberOfLifeboats : 2
+lifeboatsCapacity : 10
+
+#longboat
+capacity : 5
+xCoordinate : 200
+yCoordinate : 200
+
+#spyglass
+distance : 100
+effectiveDistance : 50
+
+#sailor
+weaponType : RIFLE
+ammo : 10
+strength : 5
+isRowing : true

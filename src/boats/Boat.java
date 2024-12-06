@@ -14,6 +14,14 @@ public abstract class Boat implements Swimable {
     protected double yCoordinate;
     protected ArrayList<Sailor> sailors;
 
+    public Boat() {
+        type = null;
+        capacity = 10;
+        xCoordinate = 0;
+        yCoordinate = 0;
+        sailors = new ArrayList<Sailor>(capacity);
+    }
+
     public Boat(BoatType type, int capacity, double xCoordinate, double yCoordinate) {
         this.type = type;
         this.capacity = capacity;

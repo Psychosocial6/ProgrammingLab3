@@ -26,7 +26,7 @@ public class Sailor extends Human {
 
     public void useWeapon() {
         try {
-            weapon.shoot();
+            weapon.shoot(name);
             System.out.printf("Матрос %s выстрелил из %s\n", name, weapon.getType());
         }
         catch (AmmoException e) {

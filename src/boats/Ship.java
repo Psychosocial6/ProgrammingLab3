@@ -13,6 +13,13 @@ public class Ship extends Boat {
     private int numberOfLifeboats;
     private int lifeboatsCapacity;
 
+    public Ship() {
+        super();
+        enginePower = 10;
+        numberOfLifeboats = 2;
+        lifeboatsCapacity = 5;
+    }
+
     public Ship(int capacity, double xCoordinate, double yCoordinate, double enginePower, int numberOfLifeboats, int lifeboatsCapacity) {
         super(BoatType.SHIP, capacity, xCoordinate, yCoordinate);
         this.enginePower = enginePower;

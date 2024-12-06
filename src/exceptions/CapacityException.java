@@ -1,7 +1,9 @@
 package exceptions;
 
+import boats.Boat;
+
 public class CapacityException extends Exception {
-    String boat;
+    private String boat;
 
     public CapacityException(String boat) {
         this.boat = boat;

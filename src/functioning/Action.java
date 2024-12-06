@@ -40,8 +40,13 @@ public class Action {
     private int sleepingTime;
 
     public Action() {
-        settings = new Settings(SettingsParser.parseSettings(new File("src/settings.txt")));
-        init();
+        settings = new Settings(SettingsParser.parseSettings(new File("src/config.txt")));
+        try {
+            init();
+        }
+        catch (WrongDataException e) {
+            System.out.println(e.getMessage());
+        }
         river = new River(flowDirection, width, flowVelocity, new ArrayList<Boat>());
         storyTeller = new StoryTeller(storyTellerName);
         river.addBoat(new Ship(shipCapacity, shipXCoordinate, shipYCoordinate, shipEnginePower, shipNumberOfLifeboats, shipLifeboatsCapacity));
@@ -88,7 +93,9 @@ public class Action {
         settings.sleep(sleepingTime);
         for (Boat boat : river.getBoats()) {
             if (boat.getType() == BoatType.LIFEBOAT) {
-                boat.swim(5, 270, river.getflowDirection(), river.getFlowVelocity(), river.getWidth());
+                double time = 5;
+                double direction = 270;
+                boat.swim(time, direction, river.getflowDirection(), river.getFlowVelocity(), river.getWidth());
             }
         }
         settings.sleep(sleepingTime);
@@ -96,16 +103,22 @@ public class Action {
         settings.sleep(sleepingTime);
         for (Boat boat : river.getBoats()) {
             if (boat.getType() == BoatType.LIFEBOAT) {
-                boat.swim(5, 270, river.getflowDirection(), river.getFlowVelocity(), river.getWidth());
+                double time = 5;
+                double direction = 270;
+                boat.swim(time, direction, river.getflowDirection(), river.getFlowVelocity(), river.getWidth());
             }
         }
         settings.sleep(sleepingTime);
         storyTeller.useSpyglass(river);
     }
 
-    private void init() {
-        sleepingTime = Integer.valueOf((String) settings.settings().get("sleeping").get("sleepingTime"));
-        switch ((String) settings.settings().get("river").get("flowDirection")) {
+    private void init() throws WrongDataException {
+        sleepingTime = Integer.valueOf((String) settings.config().get("sleeping").get("sleepingTime"));
+        if (sleepingTime < 0) {
+            throw new WrongDataException("Неверные данные sleeping : sleepingTime");
+        }
+
+        switch ((String) settings.config().get("river").get("flowDirection")) {
             case "LEFT":
                 flowDirection = FlowDirection.LEFT;
                 break;
@@ -113,27 +126,84 @@ public class Action {
                 flowDirection = FlowDirection.RIGHT;
                 break;
         }
-        width = Double.valueOf((String) settings.settings().get("river").get("width"));
-        flowVelocity = Double.valueOf((String) settings.settings().get("river").get("flowVelocity"));
-        storyTellerName = (String) settings.settings().get("storyTeller").get("name");
-        shipCapacity = Integer.valueOf((String) settings.settings().get("ship").get("capacity"));
-        shipXCoordinate = Double.valueOf((String) settings.settings().get("ship").get("xCoordinate"));
-        shipYCoordinate = Double.valueOf((String) settings.settings().get("ship").get("yCoordinate"));
-        shipEnginePower = Double.valueOf((String) settings.settings().get("ship").get("enginePower"));
-        shipNumberOfLifeboats = Integer.valueOf((String) settings.settings().get("ship").get("numberOfLifeboats"));
-        shipLifeboatsCapacity = Integer.valueOf((String) settings.settings().get("ship").get("lifeboatsCapacity"));
-        longboatCapacity = Integer.valueOf((String) settings.settings().get("longboat").get("capacity"));
-        longboatXCoordinate = Double.valueOf((String) settings.settings().get("longboat").get("xCoordinate"));
-        longboatYCoordinate = Double.valueOf((String) settings.settings().get("longboat").get("yCoordinate"));
-        spyglassDistance = Double.valueOf((String) settings.settings().get("spyglass").get("distance"));
-        spyglassEffectiveDistance = Double.valueOf((String) settings.settings().get("spyglass").get("effectiveDistance"));
-        switch ((String) settings.settings().get("sailor").get("weaponType")) {
+        if (flowDirection == null) {
+            throw new WrongDataException("Неверные данные river : flowDirection");
+        }
+
+        width = Double.valueOf((String) settings.config().get("river").get("width"));
+        if (width <= 0) {
+            throw new WrongDataException("Неверные данные river : width");
+        }
+
+        flowVelocity = Double.valueOf((String) settings.config().get("river").get("flowVelocity"));
+        if (flowVelocity < 0) {
+            throw new WrongDataException("Неверные данные river : flowVelocity");
+        }
+
+        storyTellerName = (String) settings.config().get("storyTeller").get("name");
+
+        shipCapacity = Integer.valueOf((String) settings.config().get("ship").get("capacity"));
+        if (shipCapacity < 0) {
+            throw new WrongDataException("Неверные данные ship : capacity");
+        }
+
+        shipXCoordinate = Double.valueOf((String) settings.config().get("ship").get("xCoordinate"));
+
+        shipYCoordinate = Double.valueOf((String) settings.config().get("ship").get("yCoordinate"));
+
+        shipEnginePower = Double.valueOf((String) settings.config().get("ship").get("enginePower"));
+        if (shipEnginePower <= 0) {
+            throw new WrongDataException("Неверные данные river : enginePower");
+        }
+
+        shipNumberOfLifeboats = Integer.valueOf((String) settings.config().get("ship").get("numberOfLifeboats"));
+        if (shipNumberOfLifeboats < 0) {
+            throw new WrongDataException("Неверные данные ship : numberOfLifeboats");
+        }
+
+        shipLifeboatsCapacity = Integer.valueOf((String) settings.config().get("ship").get("lifeboatsCapacity"));
+        if (shipLifeboatsCapacity < 0) {
+            throw new WrongDataException("Неверные данные ship : lifeboatsCapacity");
+        }
+
+        longboatCapacity = Integer.valueOf((String) settings.config().get("longboat").get("capacity"));
+        if (longboatCapacity < 0) {
+            throw new WrongDataException("Неверные данные longboat : capacity");
+        }
+
+        longboatXCoordinate = Double.valueOf((String) settings.config().get("longboat").get("xCoordinate"));
+
+        longboatYCoordinate = Double.valueOf((String) settings.config().get("longboat").get("yCoordinate"));
+
+        spyglassDistance = Double.valueOf((String) settings.config().get("spyglass").get("distance"));
+        if (spyglassDistance <= 0) {
+            throw new WrongDataException("Неверные данные spyglass : distance");
+        }
+
+        spyglassEffectiveDistance = Double.valueOf((String) settings.config().get("spyglass").get("effectiveDistance"));
+        if (spyglassEffectiveDistance <= 0) {
+            throw new WrongDataException("Неверные данные spyglass : effectiveDistance");
+        }
+
+        switch ((String) settings.config().get("sailor").get("weaponType")) {
             case "RIFLE":
                 sailorWeaponType = WeaponType.RIFLE;
-
+                break;
         }
-        weaponAmmo = Integer.valueOf((String) settings.settings().get("sailor").get("ammo"));
-        sailorStrength = Double.valueOf((String) settings.settings().get("sailor").get("strength"));
-        isRowing = Boolean.valueOf((String) settings.settings().get("sailor").get("isRowing"));
+        if (sailorWeaponType == null) {
+            throw new WrongDataException("Неверные данные sailor : weaponType");
+        }
+
+        weaponAmmo = Integer.valueOf((String) settings.config().get("sailor").get("ammo"));
+        if (weaponAmmo <= 0) {
+            throw new WrongDataException("Неверные данные sailor : ammo");
+        }
+
+        sailorStrength = Double.valueOf((String) settings.config().get("sailor").get("strength"));
+        if (sailorStrength <= 0) {
+            throw new WrongDataException("Неверные данные sailor : strength");
+        }
+
+        isRowing = Boolean.valueOf((String) settings.config().get("sailor").get("isRowing"));
     }
 }

@@ -2,10 +2,10 @@ package records;
 
 import java.util.HashMap;
 
-public record Settings(HashMap<String, HashMap<String, Object>> settings) {
+public record Settings(HashMap<String, HashMap<String, Object>> config) {
 
-    public Settings(HashMap<String, HashMap<String, Object>> settings) {
-        this.settings = settings;
+    public Settings(HashMap<String, HashMap<String, Object>> config) {
+        this.config = config;
     }
 
     public void sleep(int sleepingTime) {
