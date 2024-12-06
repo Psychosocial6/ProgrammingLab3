@@ -9,6 +9,6 @@ public class AmmoException extends Exception {
 
     @Override
     public String getMessage() {
-        return String.format("Патроны закончились у матроса %s", name);
+        return String.format("Патроны закончились у матроса %s\n", name);
     }
 }

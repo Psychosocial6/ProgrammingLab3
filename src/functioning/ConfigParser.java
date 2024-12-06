@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
 
-public class SettingsParser {
+public class ConfigParser {
 
-    public static HashMap<String, HashMap<String, Object>> parseSettings(File file) {
+    public static HashMap<String, HashMap<String, Object>> parseConfig(File file) {
         HashMap<String, HashMap<String, Object>> data = new HashMap<String, HashMap<String, Object>>();
         BufferedReader bufferedReader = null;
         try {

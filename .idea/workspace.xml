@@ -9,18 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cfc441f-78ea-4c28-95e0-615a3146415e" name="Changes" comment="small fixes">
+    <list default="true" id="3cfc441f-78ea-4c28-95e0-615a3146415e" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/attributes/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/attributes/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boats/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Boat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boats/Lifeboat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Lifeboat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boats/Longboat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Longboat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/boats/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exceptions/AmmoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/AmmoException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exceptions/CapacityException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/CapacityException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/NumberOfLifeboatsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/NumberOfLifeboatsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/WrongDataException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/WrongDataException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/functioning/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functioning/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/Sailor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/people/Sailor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/records/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/records/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/functioning/SettingsParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functioning/ConfigParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,12 +122,21 @@
       <option name="project" value="LOCAL" />
       <updated>1733432800161</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="commit">
+      <option name="closed" value="true" />
+      <created>1733522286207</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733522286207</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="small fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="small fixes" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -11,6 +11,6 @@ public class CapacityException extends Exception {
 
     @Override
     public String getMessage() {
-        return String.format("Превышено ограничение вместимости на: %s", boat);
+        return String.format("Превышено ограничение вместимости на: %s\n", boat);
     }
 }

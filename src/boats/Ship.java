@@ -29,7 +29,7 @@ public class Ship extends Boat {
 
     public Lifeboat dropLifeboat(int numberOfPeople) throws NumberOfLifeboatsException {
         if (numberOfLifeboats == 0) {
-            throw new NumberOfLifeboatsException();
+            throw new NumberOfLifeboatsException(toString());
         }
         Lifeboat lifeboat = new Lifeboat(lifeboatsCapacity, xCoordinate, yCoordinate);
         for (int i = 0; i < numberOfPeople; i++) {
@@ -47,7 +47,7 @@ public class Ship extends Boat {
 
     public Lifeboat dropLifeboat(int[] people) throws NumberOfLifeboatsException {
         if (numberOfLifeboats == 0) {
-            throw new NumberOfLifeboatsException();
+            throw new NumberOfLifeboatsException(toString());
         }
         Lifeboat lifeboat = new Lifeboat(lifeboatsCapacity, xCoordinate, yCoordinate);
         for (int i : people) {

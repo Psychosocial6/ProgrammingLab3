@@ -12,7 +12,7 @@ public class Weapon {
 
     public Weapon() {
         this.type = null;
-        this.ammo = 0;
+        this.ammo = 1;
     }
 
     public Weapon(WeaponType type, int ammo) {

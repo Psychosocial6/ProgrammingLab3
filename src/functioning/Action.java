@@ -40,7 +40,7 @@ public class Action {
     private int sleepingTime;
 
     public Action() {
-        settings = new Settings(SettingsParser.parseSettings(new File("src/config.txt")));
+        settings = new Settings(ConfigParser.parseConfig(new File("src/config.txt")));
         try {
             init();
         }

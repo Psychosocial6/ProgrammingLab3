@@ -9,6 +9,6 @@ public class WrongDataException extends RuntimeException {
 
     @Override
     public String getMessage() {
-        return message;
+        return String.format("%s\n", message);
     }
 }
