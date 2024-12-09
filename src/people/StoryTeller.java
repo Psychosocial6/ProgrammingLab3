@@ -34,6 +34,13 @@ public class StoryTeller extends Human {
         }
     }
 
+    public void destroyBoat(Boat boat) {
+        if (boat.getyCoordinate() == 0) {
+            boat.setHp(0);
+            System.out.println(String.format("%s сломал %s", name, boat));
+        }
+    }
+
     public void setSpyglass(Spyglass spyglass) {
         this.spyglass = spyglass;
     }

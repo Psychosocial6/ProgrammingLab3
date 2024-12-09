@@ -3,12 +3,10 @@ package attributes;
 import enums.WeaponType;
 import exceptions.AmmoException;
 
-import java.util.Objects;
+public abstract class Weapon {
 
-public class Weapon {
-
-    private WeaponType type;
-    private int ammo;
+    protected WeaponType type;
+    protected int ammo;
 
     public Weapon() {
         this.type = null;
@@ -20,14 +18,7 @@ public class Weapon {
         this.ammo = ammo;
     }
 
-    public void shoot(String username) throws AmmoException {
-        if (ammo > 0) {
-            ammo -= 1;
-        }
-        else {
-            throw new AmmoException(username);
-        }
-    }
+    public abstract void shoot(String username) throws AmmoException;
 
     public WeaponType getType() {
         return type;

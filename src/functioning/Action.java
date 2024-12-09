@@ -38,6 +38,13 @@ public class Action {
     private double sailorStrength;
     private boolean isRowing;
     private int sleepingTime;
+    private int numberOfCannons;
+    private int cannonsAmmo;
+    private int shipLifeboatsHp;
+    private int shipHp;
+    private int shipCannonsPower;
+    private double shipCannonsAccuracy;
+    private int longboatHp;
 
     public Action() {
         settings = new Settings(ConfigParser.parseConfig(new File("src/config.txt")));
@@ -49,31 +56,43 @@ public class Action {
         }
         river = new River(flowDirection, width, flowVelocity, new ArrayList<Boat>());
         storyTeller = new StoryTeller(storyTellerName);
-        river.addBoat(new Ship(shipCapacity, shipXCoordinate, shipYCoordinate, shipEnginePower, shipNumberOfLifeboats, shipLifeboatsCapacity));
-        river.addBoat(new Longboat(longboatCapacity, longboatXCoordinate, longboatYCoordinate));
+        river.addBoat(new Ship(shipCapacity, shipXCoordinate, shipYCoordinate, shipHp, shipEnginePower, shipNumberOfLifeboats, shipLifeboatsCapacity, shipLifeboatsHp, numberOfCannons, cannonsAmmo, shipCannonsPower, shipCannonsAccuracy));
+        river.addBoat(new Longboat(longboatCapacity, longboatXCoordinate, longboatYCoordinate, longboatHp));
         storyTeller.setSpyglass(new Spyglass(spyglassDistance, spyglassEffectiveDistance));
 
         for (Boat boat : river.getBoats()) {
             for (int i = 0; i < boat.getCapacity(); i++) {
                 try {
-                    boat.addSailor(new Sailor(NameGenerator.getName(), new Weapon(sailorWeaponType, weaponAmmo), sailorStrength, isRowing));
+                    boat.addSailor(new Sailor(NameGenerator.getName(), new Gun(sailorWeaponType, weaponAmmo), sailorStrength, isRowing));
                 }
                 catch (CapacityException e) {
                     System.out.println(e.getMessage());
                 }
             }
         }
+        int longboatX = 0;
+        int longboatY = 0;
+        river.addBoat(new Longboat(longboatCapacity, longboatX, longboatY, longboatHp));
     }
 
     public void go() {
         Random random = new Random();
         for (Boat boat : river.getBoats()) {
+            if (boat.getType() == BoatType.LONGBOAT && boat.getyCoordinate() == 0) {
+                storyTeller.destroyBoat(boat);
+            }
+        }
+        for (Boat boat : river.getBoats()) {
             if (boat.getType() == BoatType.SHIP) {
-                boat.getSailors().get(random.nextInt(0, boat.getSailors().size())).useWeapon();
+                int cannonsIndex = 0;
+                int sailorsIndex = 0;
+                ((Ship) boat).useCannon(cannonsIndex, sailorsIndex);
                 settings.sleep(sleepingTime);
-                boat.getSailors().get(random.nextInt(0, boat.getSailors().size())).useWeapon();
+                boat.getSailors().get(random.nextInt(0, boat.getSailors().size())).useGun();
                 settings.sleep(sleepingTime);
-                boat.getSailors().get(random.nextInt(0, boat.getSailors().size())).useWeapon();
+                boat.getSailors().get(random.nextInt(0, boat.getSailors().size())).useGun();
+                settings.sleep(sleepingTime);
+                boat.getSailors().get(random.nextInt(0, boat.getSailors().size())).useGun();
                 settings.sleep(sleepingTime);
             }
         }
@@ -205,5 +224,40 @@ public class Action {
         }
 
         isRowing = Boolean.valueOf((String) settings.config().get("sailor").get("isRowing"));
+
+        numberOfCannons = Integer.valueOf((String) settings.config().get("ship").get("numberOfCannons"));
+        if (numberOfCannons < 0) {
+            throw new WrongDataException("Неверные данные ship : numberOfCannons");
+        }
+
+        cannonsAmmo = Integer.valueOf((String) settings.config().get("ship").get("cannonsAmmo"));
+        if (cannonsAmmo < 0) {
+            throw new WrongDataException("Неверные данные ship : cannonsAmmo");
+        }
+
+        shipLifeboatsHp = Integer.valueOf((String) settings.config().get("ship").get("lifeboatsHp"));
+        if (shipLifeboatsHp <= 0) {
+            throw new WrongDataException("Неверные данные ship : lifeboatsHp");
+        }
+
+        shipHp = Integer.valueOf((String) settings.config().get("ship").get("hp"));
+        if (shipHp <= 0) {
+            throw new WrongDataException("Неверные данные ship : hp");
+        }
+
+        shipCannonsPower = Integer.valueOf((String) settings.config().get("ship").get("cannonsPower"));
+        if (shipCannonsPower <= 0) {
+            throw new WrongDataException("Неверные данные ship : cannonsPower");
+        }
+
+        shipCannonsAccuracy = Double.valueOf((String) settings.config().get("ship").get("cannonsAccuracy"));
+        if (shipCannonsAccuracy <= 0) {
+            throw new WrongDataException("Неверные данные ship : cannonsAccuracy");
+        }
+
+        longboatHp = Integer.valueOf((String) settings.config().get("longboat").get("hp"));
+        if (longboatHp <= 0) {
+            throw new WrongDataException("Неверные данные longboat : hp");
+        }
     }
 }

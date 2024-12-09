@@ -1,45 +1,45 @@
 package people;
 
-import attributes.Weapon;
+import attributes.Gun;
 import exceptions.AmmoException;
 
 public class Sailor extends Human {
 
-    private Weapon weapon;
+    private Gun gun;
     private double strength;
     public boolean isRowing;
 
     public Sailor() {
         super();
-        this.weapon = null;
+        this.gun = null;
         this.strength = 0;
         this.isRowing = false;
 
     }
 
-    public Sailor(String name, Weapon weapon, double strength, boolean isRowing) {
+    public Sailor(String name, Gun gun, double strength, boolean isRowing) {
         super(name);
-        this.weapon = weapon;
+        this.gun = gun;
         this.isRowing = isRowing;
         this.strength = strength;
     }
 
-    public void useWeapon() {
+    public void useGun() {
         try {
-            weapon.shoot(name);
-            System.out.printf("Матрос %s выстрелил из %s\n", name, weapon.getType());
+            gun.shoot(name);
+            System.out.printf("Матрос %s выстрелил из %s\n", name, gun.getType());
         }
         catch (AmmoException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public Weapon getWeapon() {
-        return weapon;
+    public Gun getGun() {
+        return gun;
     }
 
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+    public void setGun(Gun gun) {
+        this.gun = gun;
     }
 
     public double getStrength() {

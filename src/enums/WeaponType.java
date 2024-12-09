@@ -1,5 +1,6 @@
 package enums;
 
 public enum WeaponType {
-    RIFLE
+    RIFLE,
+    CANNON
 }

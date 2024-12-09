@@ -1,14 +1,14 @@
 package exceptions;
 
 public class AmmoException extends Exception {
-    private String name;
+    private String message;
 
-    public AmmoException(String name) {
-        this.name = name;
+    public AmmoException(String message) {
+        this.message = message;
     }
 
     @Override
     public String getMessage() {
-        return String.format("Патроны закончились у матроса %s\n", name);
+        return message;
     }
 }

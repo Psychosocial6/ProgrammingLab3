@@ -13,6 +13,8 @@ public abstract class Boat implements Swimable {
     protected double xCoordinate;
     protected double yCoordinate;
     protected ArrayList<Sailor> sailors;
+    protected int hp;
+    protected final int MAX_HP;
 
     public Boat() {
         type = null;
@@ -20,17 +22,36 @@ public abstract class Boat implements Swimable {
         xCoordinate = 0;
         yCoordinate = 0;
         sailors = new ArrayList<Sailor>(capacity);
+        hp = 100;
+        MAX_HP = 100;
     }
 
-    public Boat(BoatType type, int capacity, double xCoordinate, double yCoordinate) {
+    public Boat(BoatType type, int capacity, double xCoordinate, double yCoordinate, int hp) {
         this.type = type;
         this.capacity = capacity;
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.sailors = new ArrayList<Sailor>(capacity);
+        this.hp = hp;
+        MAX_HP = hp;
     }
 
     public abstract void addSailor(Sailor sailor) throws CapacityException;
+
+    public void fix() {
+        double power = 0;
+        for (int i = 0; i < sailors.size(); i++) {
+            power += sailors.get(i).getStrength();
+        }
+        if (hp + (int) power >= MAX_HP) {
+            hp = MAX_HP;
+            System.out.println(String.format("%s полностью отремонтировано", toString()));
+        }
+        else {
+            hp += (int) power;
+            System.out.println(String.format("Произведен ремонт %s, прочность %d из %d", toString(), hp, MAX_HP));
+        }
+    }
 
     public BoatType getType() {
         return type;
@@ -70,6 +91,14 @@ public abstract class Boat implements Swimable {
 
     public void setSailors(ArrayList<Sailor> sailors) {
         this.sailors = sailors;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     @Override
