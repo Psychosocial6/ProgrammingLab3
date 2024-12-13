@@ -15,7 +15,7 @@ public class Ship extends Boat {
 
     private double enginePower;
     private int numberOfLifeboats;
-    private int lifeboatsCapacity;
+    public int lifeboatsCapacity;
     private int lifeboatsHp;
     private ArrayList<Cannon> cannons;
 
@@ -28,6 +28,7 @@ public class Ship extends Boat {
         int cannonsAmmo = 5;
         double cannonsAccuracy = 0.85D;
         int cannonsPower = 20;
+        cannons = new ArrayList<Cannon>();
         cannons.add(new Cannon(cannonsAmmo, cannonsPower, cannonsAccuracy));
         cannons.add(new Cannon(cannonsAmmo, cannonsPower, cannonsAccuracy));
     }

@@ -1,3 +1,4 @@
+import boats.Ship;
 import functioning.Action;
 
 public class Main {

@@ -11,17 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3cfc441f-78ea-4c28-95e0-615a3146415e" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/attributes/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/attributes/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boats/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Boat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boats/Lifeboat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Lifeboat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/boats/Longboat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Longboat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/boats/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boats/Ship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/WeaponType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/WeaponType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/AmmoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/AmmoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functioning/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/functioning/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/Sailor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/people/Sailor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/people/StoryTeller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/people/StoryTeller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733522286207</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit">
+      <option name="closed" value="true" />
+      <created>1733722790499</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733722790499</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
